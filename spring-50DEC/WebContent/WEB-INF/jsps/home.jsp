@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-hi there
+Hi there
+
+Session: <%= session.getAttribute("name")%> 
 </body>
 </html>

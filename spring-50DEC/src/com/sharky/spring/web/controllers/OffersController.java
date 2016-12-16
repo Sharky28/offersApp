@@ -1,5 +1,7 @@
 package com.sharky.spring.web.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OffersController {
 
 	@RequestMapping("/")
-	public String showHome() {
+	public String showHome(HttpSession session) {
+		session.setAttribute("name", "borris");
 		return "home";
 
 	}
