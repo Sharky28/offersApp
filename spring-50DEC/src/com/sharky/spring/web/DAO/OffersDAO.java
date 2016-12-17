@@ -16,6 +16,7 @@ public class OffersDAO {
 
 	private JdbcTemplate jdbc;
 
+	
 	@Autowired
 	public void setDataSource(DataSource jdbc) {
 		this.jdbc = new JdbcTemplate(jdbc);

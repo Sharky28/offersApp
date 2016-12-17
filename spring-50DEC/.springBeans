@@ -9,6 +9,7 @@
 	<configs>
 		<config>WebContent/WEB-INF/offers-servlet.xml</config>
 		<config>src/com/sharky/spring/web/config/dao-context.xml</config>
+		<config>src/com/sharky/spring/web/config/service-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
