@@ -2,10 +2,13 @@ package com.sharky.spring.web.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,32 +28,41 @@ public class OffersController {
 
 	@RequestMapping("/offers")
 	public String showOffers(Model model) {
-		
-		List<Offer> offers= offersService.getCurrent();
-		
+
+		List<Offer> offers = offersService.getCurrent();
+
 		model.addAttribute("offers", offers);
 
 		return "offers";
 
 	}
-	
+
 	@RequestMapping("/createOffer")
 	public String createOffer() {
 		return "createOffer";
 
 	}
-	
-	@RequestMapping(value ="/doCreate", method= RequestMethod.POST)
-	public String doCreate(Model model, Offer offer) {
-		System.out.println(offer);
+
+	@RequestMapping(value = "/doCreate", method = RequestMethod.POST)
+	public String doCreate(Model model, @Valid Offer offer, BindingResult result) {
+
+		if (result.hasErrors()) {
+			System.out.println("Form does not validate");
+			List<ObjectError> errors = result.getAllErrors();
+			for (ObjectError objectError : errors) {
+				System.out.println(objectError.getDefaultMessage());
+			}
+		} else {
+			System.out.println("Form Validated");
+		}
 		return "offerCreated";
 
 	}
-	
-	@RequestMapping(value = "/test", method= RequestMethod.GET)
-	public String showTest(Model model, @RequestParam("id")String id) {
-		
-		System.out.println("ID is: " +id);
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String showTest(Model model, @RequestParam("id") String id) {
+
+		System.out.println("ID is: " + id);
 
 		return "home";
 
