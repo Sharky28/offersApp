@@ -2,6 +2,7 @@ package com.sharky.spring.web.controllers;
 
 import java.util.List;
 
+import javax.jws.WebParam.Mode;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,8 @@ public class OffersController {
 	}
 
 	@RequestMapping("/createOffer")
-	public String createOffer() {
+	public String createOffer(Model model) {
+		model.addAttribute("offer", new Offer());
 		return "createOffer";
 
 	}
@@ -47,13 +49,9 @@ public class OffersController {
 	public String doCreate(Model model, @Valid Offer offer, BindingResult result) {
 
 		if (result.hasErrors()) {
-			System.out.println("Form does not validate");
-			List<ObjectError> errors = result.getAllErrors();
-			for (ObjectError objectError : errors) {
-				System.out.println(objectError.getDefaultMessage());
-			}
-		} else {
-			System.out.println("Form Validated");
+			
+			
+			return "createOffer";
 		}
 		return "offerCreated";
 

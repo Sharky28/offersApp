@@ -7,7 +7,7 @@
 }
 
 input[type=text] {
-	width: 150px;
+	width: 250px;
 	padding-left: 10px;
 }
 
@@ -20,4 +20,10 @@ textarea {
 .label {
 	text-align: right;
 	vertical-align: top;
+}
+
+.error{
+	font-size: small;
+	color: red;
+	margin-left: 10px;
 }
