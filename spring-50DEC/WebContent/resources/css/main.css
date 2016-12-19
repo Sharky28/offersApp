@@ -27,3 +27,7 @@ textarea {
 	color: red;
 	margin-left: 10px;
 }
+table.offers{
+	padding: 20px;
+	border: 1px solid black;
+}

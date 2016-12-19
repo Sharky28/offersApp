@@ -20,4 +20,9 @@ public class OffersService {
 	public List<Offer> getCurrent() {
 		return offersDAO.getOffers();
 	}
+
+	public void create(Offer offer) {
+		offersDAO.create(offer);
+	}
+
 }

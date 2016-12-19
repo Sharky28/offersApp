@@ -38,4 +38,9 @@ public class OffersDAO {
 		});
 	}
 
+	public void create(Offer offer) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
