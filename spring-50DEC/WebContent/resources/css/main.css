@@ -3,16 +3,18 @@
 .formTable {
 	padding: 10px;
 	border: 1px solid blue;
-	width: 400px;
+	width: 500px;
 }
 
 input[type=text] {
 	width: 250px;
 	padding-left: 10px;
+	
 }
 input[type=password] {
 	width: 250px;
 	padding-left: 10px;
+	
 }
 
 textarea {

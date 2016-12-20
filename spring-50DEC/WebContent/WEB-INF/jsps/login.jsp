@@ -34,5 +34,7 @@
 				value="${_csrf.token}" />
 		</table>
 	</form>
+	
+	<p><a href="<c:url value="/newAccount"></c:url>">Create new Account</a></p>
 </body>
 </html>
