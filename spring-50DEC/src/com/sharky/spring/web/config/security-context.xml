@@ -10,6 +10,7 @@
 	
 	
 	<security:authentication-manager>
+	
 		<security:authentication-provider>
 			<security:user-service>
 				<security:user name="John" password="letmein"
@@ -18,9 +19,14 @@
 					authorities="admin" />
 			</security:user-service>
 		</security:authentication-provider>
+		
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource" />
+		</security:authentication-provider>
+		
 	</security:authentication-manager>
-	
-	
+
+
 	<security:http use-expressions="true" auto-config="true">
 	<security:intercept-url pattern="/createOffer" access="isAuthenticated()" />
 	<security:intercept-url pattern="/doCreate" access="isAuthenticated()" />
