@@ -22,8 +22,16 @@
 	
 	
 	<security:http use-expressions="true" auto-config="true">
-		<security:intercept-url pattern="/**" access="denyAll" />
+	<security:intercept-url pattern="/createOffer" access="isAuthenticated()" />
+	<security:intercept-url pattern="/doCreate" access="isAuthenticated()" />
+	<security:intercept-url pattern="/offerCreated" access="isAuthenticated()" />
+	<security:intercept-url pattern="/static/**" access="permitAll" />
+	<security:intercept-url pattern="/login" access="permitAll" />
+	<security:intercept-url pattern="/" access="permitAll" />
+	<security:intercept-url pattern="/offers" access="permitAll" />
+	<security:intercept-url pattern="/**" access="denyAll" />
 
-		<security:form-login />
+	<security:form-login login-page="/login"
+		authentication-failure-url="/login?error=true" />
 	</security:http>
 </beans>

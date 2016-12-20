@@ -10,6 +10,10 @@ input[type=text] {
 	width: 250px;
 	padding-left: 10px;
 }
+input[type=password] {
+	width: 250px;
+	padding-left: 10px;
+}
 
 textarea {
 	width: 250px;
@@ -30,4 +34,7 @@ textarea {
 table.offers{
 	padding: 20px;
 	border: 1px solid black;
+}
+p.loginError{
+	color: red;
 }
