@@ -13,5 +13,15 @@
 <p><a href="${pageContext.request.contextPath}/offers">Show Current Offers</a></p>
 <p><a href="${pageContext.request.contextPath}/createOffer">Create a new Offer</a></p>
 
+
+<%-- <p><a href="<c:url value='j_spring_security_logout'></c:url>"> Log Out</a></p> --%>
+<c:url var="logoutUrl" value="/loggedOut" />
+	<form action="${logoutUrl}" id="logout" method="post">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	</form>
+	<a class="login" href="#"
+		onclick="document.getElementById('logout').submit();">Log out</a>
+
 </body>
 </html>

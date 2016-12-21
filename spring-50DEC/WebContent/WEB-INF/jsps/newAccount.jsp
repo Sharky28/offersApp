@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,13 +39,13 @@ function checkPasswordsMatch(){
 		
 	if(password == confirmpass)
 		{
-			$("#matchpass").text("Passwords Match")
+			$("#matchpass").text("<fmt:message key='MatchedPasswords.user.password'></fmt:message>")
 			$("#matchpass").addClass("valid")
 			$("#matchpass").removeClass("error")
 		}
 	else
 		{
-			$("#matchpass").text("Passwords do not Match")
+			$("#matchpass").text("<fmt:message key='UnmatchedPasswords.user.password'></fmt:message>")
 			$("#matchpass").addClass("error")
 			$("#matchpass").removeClass("valid")
 		}
@@ -86,6 +87,7 @@ $(document).ready(onLoad);
 			</tr>
 		</table>
 	</sf:form>
+
 
 </body>
 </html>

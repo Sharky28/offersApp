@@ -28,11 +28,13 @@
 
 
 	<security:http use-expressions="true" auto-config="true">
+	<security:intercept-url pattern="/j_spring_security_logout" access="permitAll" />
 	<security:intercept-url pattern="/createOffer" access="isAuthenticated()" />
 	<security:intercept-url pattern="/doCreate" access="isAuthenticated()" />
 	<security:intercept-url pattern="/offerCreated" access="isAuthenticated()" />
 	<security:intercept-url pattern="/static/**" access="permitAll" />
 	<security:intercept-url pattern="/login" access="permitAll" />
+	<security:intercept-url pattern="/loggedOut" access="permitAll" />
 	<security:intercept-url pattern="/newAccount" access="permitAll" />
 	<security:intercept-url pattern="/createAccount" access="permitAll" />
 	<security:intercept-url pattern="/accountCreated" access="permitAll" />
@@ -42,5 +44,7 @@
 
 	<security:form-login login-page="/login"
 		authentication-failure-url="/login?error=true" />
+	<security:logout logout-url="/loggedOut" />
+
 	</security:http>
 </beans>
