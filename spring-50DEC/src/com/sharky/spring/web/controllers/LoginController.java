@@ -37,7 +37,7 @@ public class LoginController {
 
 		if (result.hasErrors()) {
 
-			return "createAccount";
+			return "newAccount";
 		}
 		
 		user.setAuthority("user");

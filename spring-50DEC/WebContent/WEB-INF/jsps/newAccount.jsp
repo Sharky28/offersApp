@@ -16,15 +16,15 @@
 		<table class="formTable">
 			<tr>
 				<td class="label">Username:</td>
-				<td><sf:input path="username" name="username" type="text"></sf:input> <br><sf:errors path = "username" cssClass="error"></sf:errors></br></td>
+				<td><sf:input path="username" name="username" type="text"></sf:input><div class="error"><sf:errors path = "username" ></sf:errors></div></td>
 			</tr>
 			<tr>
 				<td class="label">Email:</td>
-				<td><sf:input path ="email" name="email" type="text"></sf:input> <br><sf:errors path = "email" cssClass="error"></sf:errors></br><br></br></td>
+				<td><sf:input path ="email" name="email" type="text"></sf:input><div class="error"><sf:errors path = "email" ></sf:errors></div><br></br></td>
 			</tr>
 			<tr>
 				<td class="label">Password:</td>
-				<td><sf:input path ="password" name="password" type="text"></sf:input> <br><sf:errors path = "password" cssClass="error"></sf:errors></br><br></br></td>
+				<td><sf:input path ="password" name="password" type="text"></sf:input><div class="error"><sf:errors path = "password" ></sf:errors></div><br></br></td>
 			</tr>
 			<tr>
 				<td class="label">Confirm Password:</td>
