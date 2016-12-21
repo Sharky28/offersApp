@@ -3,6 +3,8 @@ package com.sharky.spring.web.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,11 +41,23 @@ public class LoginController {
 
 			return "newAccount";
 		}
-		
+
 		user.setAuthority("user");
 		user.setEnabled(true);
-		
-		usersService.create(user);
+
+		if (usersService.exists(user.getUsername())) {
+
+			result.rejectValue("username", "duplicateKey.user.username");
+			return "newAccount";
+		}
+
+		try {
+			usersService.create(user);
+		} catch (DuplicateKeyException ex) {
+			result.rejectValue("username", "duplicateKey.user.username");
+			return "newAccount";
+		}
+
 		return "/accountCreated";
 
 	}

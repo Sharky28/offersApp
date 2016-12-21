@@ -18,4 +18,11 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<mvc:resources location="/resources/" mapping="/static/**"></mvc:resources>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+	<property name="basename"
+		value="com/sharky/spring/web/messages.messages">
+	</property>
+	</bean>
 </beans>
