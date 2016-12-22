@@ -74,11 +74,11 @@ $(document).ready(onLoad);
 			</tr>
 			<tr>
 				<td class="label">Password:</td>
-				<td><sf:input id="password" path ="password" name="password" type="text"></sf:input><div class="error"><sf:errors path = "password" ></sf:errors></div></td>
+				<td><sf:input id="password" path ="password" name="password" type="password"></sf:input><div class="error"><sf:errors path = "password" ></sf:errors></div></td>
 			</tr>
 			<tr>
 				<td class="label">Confirm Password:</td>
-				<td><input id="confirmpass" name="confirmPass" type="text"></input><div id ="matchpass"></div></td>
+				<td><input id="confirmpass" name="confirmPass" type="password"></input><div id ="matchpass"></div></td>
 			</tr>
 			
 			<tr>
