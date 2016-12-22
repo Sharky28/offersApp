@@ -25,7 +25,12 @@
 	<a class="login" href="#"
 		onclick="document.getElementById('logout').submit();">Log out</a>
 		
+		
+		
 </sec:authorize>
+<sec:authorize access="!isAuthenticated()">	
+<p><a href="${pageContext.request.contextPath}/login">Log in</a></p>
+</sec:authorize>	
 		
 <sec:authorize access="hasRole('ROLE_ADMIN')">	
 <p><a href="${pageContext.request.contextPath}/admin">Admin Section</a></p>
