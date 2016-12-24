@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="Offers.base" template="/WEB-INF/templates/default.jsp">
-		<put-attribute name="includes" value=""></put-attribute>
+		<put-attribute name="includes" value=" "></put-attribute>
 		<put-attribute name="title" value="Offers Homepage"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
@@ -33,7 +33,7 @@
 	</definition>
 	
 	<definition name="accountCreated" extends="Offers.base">
-		<put-attribute name="title" value="Account Creation Success"></put-attribute>
+		<put-attribute name="title" value="Success"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/accountCreated.jsp"></put-attribute>
 	</definition>
 	

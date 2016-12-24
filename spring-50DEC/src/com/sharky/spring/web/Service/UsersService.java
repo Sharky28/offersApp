@@ -14,7 +14,7 @@ public class UsersService {
 	private UsersDao usersDao;
 
 	@Autowired
-	public void setOffersDAO(UsersDao usersDao) {
+	public void setUsersDAO(UsersDao usersDao) {
 		this.usersDao = usersDao;
 	}
 

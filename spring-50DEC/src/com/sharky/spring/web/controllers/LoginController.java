@@ -72,7 +72,7 @@ public class LoginController {
 			return "newAccount";
 		}
 
-		return "/accountCreated";
+		return "accountCreated";
 
 	}
 
