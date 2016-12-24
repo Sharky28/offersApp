@@ -26,6 +26,21 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="loggedOut" extends="Offers.base">
+		<put-attribute name="title" value="Logged Out"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/loggedOut.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="error" extends="Offers.base">
+		<put-attribute name="title" value="Error"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/error.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="admin" extends="Offers.base">
+		<put-attribute name="title" value="Admin Page"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/admin.jsp"></put-attribute>
+	</definition>
+	
 	<definition name="newAccount" extends="Offers.base">
 	<put-attribute name="includes" value="/WEB-INF/tiles/newAccountScript.jsp"></put-attribute>
 		<put-attribute name="title" value="Create Account"></put-attribute>
