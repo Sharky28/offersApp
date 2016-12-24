@@ -11,6 +11,7 @@
 		<config>src/com/sharky/spring/web/config/dao-context.xml</config>
 		<config>src/com/sharky/spring/web/config/service-context.xml</config>
 		<config>src/com/sharky/spring/web/config/security-context.xml</config>
+		<config>test/com/sharky/spring/web/test/config/datasource.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
