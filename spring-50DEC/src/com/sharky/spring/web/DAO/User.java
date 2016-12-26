@@ -24,6 +24,8 @@ public class User {
 
 	private boolean enabled;
 
+	@NotBlank()
+	@Size(min = 5, max = 60)
 	private String name;
 
 	private String authority;

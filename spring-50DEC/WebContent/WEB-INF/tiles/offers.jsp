@@ -13,8 +13,8 @@
 		</tr>
 		<c:forEach var="offer" items="${offers}">
 			<tr>
-				<td><c:out value="${offer.name}"></c:out></td>
-				<td><c:out value="${offer.email}"></c:out></td>
+				<td><c:out value="${offer.user.name}"></c:out></td>
+				<td><c:out value="${offer.user.email}"></c:out></td>
 				<td><c:out value="${offer.text}"></c:out></td>
 
 			</tr>

@@ -15,7 +15,10 @@
 
 		<security:authentication-provider>
 			<security:jdbc-user-service
-				data-source-ref="dataSource" id="jdbcUsersService" />
+				data-source-ref="dataSource"
+				users-by-username-query="SELECT username, password, enabled FROM users WHERE binary username = ?"
+				authorities-by-username-query="select username,authority from users where binary username = ?" 
+				id="jdbcUsersService" />
 			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
 		</security:authentication-provider>
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +40,9 @@ public class UserDaoTests {
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
+		jdbc.execute("delete from offers");
 		jdbc.execute("delete from users");
+		
 	
 
 	}
@@ -62,5 +65,6 @@ public class UserDaoTests {
 
 		assertEquals("should be 4 retrieved users", 4, users2.size());
 	}
-
+	
+	
 }

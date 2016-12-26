@@ -17,6 +17,7 @@ public class Offer {
 	private User user;
 	
 	public Offer(){
+		this.user = new User();
 		
 	}
 
@@ -51,6 +52,7 @@ public class Offer {
 	public String getUsername(){
 		return user.getUsername();
 	}
+	
 	public User getUser() {
 		return user;
 	}

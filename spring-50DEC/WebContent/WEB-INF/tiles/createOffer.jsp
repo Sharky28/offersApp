@@ -7,14 +7,6 @@
 		action="${pageContext.request.contextPath}/doCreate" commandName="offer">
 		<table class="formTable">
 			<tr>
-				<td class="label">Name:</td>
-				<td><sf:input path="name" name="name" type="text"></sf:input> <br><sf:errors path = "name" cssClass="error"></sf:errors></br></td>
-			</tr>
-			<tr>
-				<td class="label">Email:</td>
-				<td><sf:input path ="email" name="email" type="text"></sf:input> <br><sf:errors path = "email" cssClass="error"></sf:errors></br><br></br></td>
-			</tr>
-			<tr>
 				<td class="label">Your Offer:</td>
 				<td><sf:textarea path ="text" name="text" rows="10" cols="10"></sf:textarea><br><sf:errors path = "text" cssClass="error"></sf:errors></br></td>
 			</tr>

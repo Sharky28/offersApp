@@ -1,5 +1,6 @@
 package com.sharky.spring.web.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.jws.WebParam.Mode;
@@ -54,12 +55,15 @@ public class OffersController {
 	}
 
 	@RequestMapping(value = "/doCreate", method = RequestMethod.POST)
-	public String doCreate(Model model, @Valid Offer offer, BindingResult result) {
+	public String doCreate(Model model, @Valid Offer offer, BindingResult result,Principal principal) {
 
 		if (result.hasErrors()) {
 
 			return "createOffer";
 		}
+		
+		String username = principal.getName();
+		offer.getUser().setUsername(username);
 		offersService.create(offer);
 		return "offerCreated";
 
