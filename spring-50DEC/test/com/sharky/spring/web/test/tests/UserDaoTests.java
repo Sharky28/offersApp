@@ -31,16 +31,16 @@ public class UserDaoTests {
 	@Autowired
 	private DataSource dataSource;
 
-	User user1 = new User("sharmarke", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	User user2 = new User("ardoSalal", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	User user3 = new User("filsanUgas", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	User user4 = new User("ahmedUgas", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	User user1 = new User("sharmarke","sharky","helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	User user2 = new User("ardoSalal","ardo", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	User user3 = new User("filsanUgas","filsan", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	User user4 = new User("ahmedUgas","ahmed", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
 
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		jdbc.execute("delete from users");
-		jdbc.execute("delete from authorities");
+	
 
 	}
 	
