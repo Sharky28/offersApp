@@ -36,6 +36,8 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/offerCreated"
 			access="isAuthenticated()" />
+			<security:intercept-url pattern="/offerDeleted"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/static/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/login"

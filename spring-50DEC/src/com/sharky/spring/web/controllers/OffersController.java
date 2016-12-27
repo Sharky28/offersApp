@@ -40,32 +40,48 @@ public class OffersController {
 		return "offers";
 
 	}
-	
-	/*@ExceptionHandler(DataAccessException.class)
-	public String handleDatabaseException(DataAccessException ex)
-	{
-		return "error";
-	}
-*/
+
+	/*
+	 * @ExceptionHandler(DataAccessException.class) public String
+	 * handleDatabaseException(DataAccessException ex) { return "error"; }
+	 */
 	@RequestMapping("/createOffer")
-	public String createOffer(Model model) {
-		model.addAttribute("offer", new Offer());
+	public String createOffer(Model model, Principal principal) {
+
+		Offer offer = null;
+		if (principal != null) {
+			String username = principal.getName();
+			offer = offersService.getOffer(username);
+		}
+		if (offer == null) {
+			offer = new Offer();
+		}
+		model.addAttribute("offer", offer);
 		return "createOffer";
 
 	}
 
 	@RequestMapping(value = "/doCreate", method = RequestMethod.POST)
-	public String doCreate(Model model, @Valid Offer offer, BindingResult result,Principal principal) {
+	public String doCreate(Model model, @Valid Offer offer, 
+			BindingResult result, Principal principal,
+			@RequestParam(value="delete",required=false) String delete) {
 
 		if (result.hasErrors()) {
 
 			return "createOffer";
 		}
+		if(delete==null){
+			String username = principal.getName();
+			offer.getUser().setUsername(username);
+			offersService.saveOrUpdate(offer);
+			return "offerCreated";
+		}
+		else {
+			offersService.delete(offer.getId());
+			return "offerDeleted";
+		}
 		
-		String username = principal.getName();
-		offer.getUser().setUsername(username);
-		offersService.create(offer);
-		return "offerCreated";
+		
 
 	}
 
