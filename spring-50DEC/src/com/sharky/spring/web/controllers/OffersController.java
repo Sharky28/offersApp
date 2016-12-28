@@ -12,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sharky.spring.web.DAO.FormValidationGroup;
 import com.sharky.spring.web.DAO.Offer;
 import com.sharky.spring.web.Service.OffersService;
 
@@ -62,7 +64,7 @@ public class OffersController {
 	}
 
 	@RequestMapping(value = "/doCreate", method = RequestMethod.POST)
-	public String doCreate(Model model, @Valid Offer offer, 
+	public String doCreate(Model model, @Validated(value=FormValidationGroup.class) Offer offer, 
 			BindingResult result, Principal principal,
 			@RequestParam(value="delete",required=false) String delete) {
 

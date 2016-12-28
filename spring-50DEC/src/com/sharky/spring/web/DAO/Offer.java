@@ -1,19 +1,28 @@
 package com.sharky.spring.web.DAO;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.sharky.spring.web.validation.ValidEmail;
-
+@Entity
+@Table(name="offers")
 public class Offer {
 
+	@Id
+	@GeneratedValue
 	private int id;
 	
 	
-	@Size(min=20,max=255, message="Text must be between 20 and 255 characters")
+	@Size(min=20,max=255, message="Text must be between 20 and 255 characters",
+			groups={FormValidationGroup.class,PersistenceValididationGroup.class})
 	private String text;
 	
+	@ManyToOne
+	@JoinColumn(name="username")
 	private User user;
 	
 	public Offer(){
