@@ -1,6 +1,8 @@
 package com.sharky.spring.web.test.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -32,22 +34,19 @@ public class UserDaoTests {
 	@Autowired
 	private DataSource dataSource;
 
-	private User user1 = new User("sharmarke","sharky123","helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	private User user2 = new User("ardoSalal","ardo123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	private User user3 = new User("filsanUgas","filsan123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	private User user4 = new User("ahmedUgas","ahmed123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	
+	private User user1 = new User("sharmarke", "sharky123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user2 = new User("ardoSalal", "ardo123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user3 = new User("filsanUgas", "filsan123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user4 = new User("ahmedUgas", "ahmed123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
 
 	@Before
 	public void init() {
 		JdbcTemplate jdbc = new JdbcTemplate(dataSource);
 		jdbc.execute("delete from offers");
 		jdbc.execute("delete from users");
-		
-	
 
 	}
-	
+
 	@Test
 	public void testCreateRetrieve() {
 		usersDao.create(user1);
@@ -66,6 +65,14 @@ public class UserDaoTests {
 
 		assertEquals("should be 4 retrieved users", 4, users2.size());
 	}
-	
-	
+
+	@Test
+	public void testExists() {
+		usersDao.create(user1);
+		usersDao.create(user2);
+
+		assertTrue("User should exist", usersDao.exists(user1.getUsername()));
+		assertFalse("User should not exist", usersDao.equals("assasa"));
+	}
+
 }
