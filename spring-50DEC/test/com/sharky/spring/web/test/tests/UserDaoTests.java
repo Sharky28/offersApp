@@ -32,10 +32,11 @@ public class UserDaoTests {
 	@Autowired
 	private DataSource dataSource;
 
-	User user1 = new User("sharmarke","sharky","helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	User user2 = new User("ardoSalal","ardo", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	User user3 = new User("filsanUgas","filsan", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
-	User user4 = new User("ahmedUgas","ahmed", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user1 = new User("sharmarke","sharky123","helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user2 = new User("ardoSalal","ardo123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user3 = new User("filsanUgas","filsan123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	private User user4 = new User("ahmedUgas","ahmed123", "helloThere", "sharmarke.ugas@gmail.com", true, "user");
+	
 
 	@Before
 	public void init() {

@@ -1,31 +1,37 @@
 package com.sharky.spring.web.DAO;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.sharky.spring.web.validation.ValidEmail;
 
+@javax.persistence.Entity
+@Table(name="users")
 public class User {
 
-	@NotBlank()
-	@Size(min = 6, max = 15)
-	@Pattern(regexp = "^\\w{8,}$")
+	@NotBlank(groups={PersistenceValididationGroup.class,FormValidationGroup.class})
+	@Size(min = 6, max = 15,groups={PersistenceValididationGroup.class,FormValidationGroup.class})
+	@Pattern(regexp = "^\\w{8,}$",groups={PersistenceValididationGroup.class,FormValidationGroup.class})
+	@Id
 	private String username;
 
-	@NotBlank()
-	@Size(min = 6, max = 15)
-	@Pattern(regexp = "^\\S+$")
+	@NotBlank(groups={PersistenceValididationGroup.class,FormValidationGroup.class})
+	@Size(min = 6, max = 15,groups={FormValidationGroup.class})
+	@Pattern(regexp = "^\\S+$",groups={PersistenceValididationGroup.class,FormValidationGroup.class})
 	private String password;
 
-	@ValidEmail()
+	@ValidEmail(groups={PersistenceValididationGroup.class,FormValidationGroup.class})
 	private String email;
 
 	private boolean enabled;
 
-	@NotBlank()
-	@Size(min = 5, max = 60)
+	@NotBlank(groups={PersistenceValididationGroup.class,FormValidationGroup.class})
+	@Size(min = 5, max = 60,groups={PersistenceValididationGroup.class,FormValidationGroup.class})
 	private String name;
 
 	private String authority;
