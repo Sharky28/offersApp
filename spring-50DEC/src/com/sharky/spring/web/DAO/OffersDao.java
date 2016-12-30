@@ -5,6 +5,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -21,19 +22,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Component("offersDAO")
 public class OffersDao {
 
-	private NamedParameterJdbcTemplate jdbc;
-
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	private Session session() {
 		return sessionFactory.getCurrentSession();
 
-	}
-
-	@Autowired
-	public void setDataSource(DataSource jdbc) {
-		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -54,28 +48,26 @@ public class OffersDao {
 
 	}
 
-	public void create(Offer offer) {
-		session().save(offer);
-	}
-
-	public void update(Offer offer) {
-		session().update(offer);
-		
+	public void saveOrUpdate(Offer offer) {
+		session().saveOrUpdate(offer);
 	}
 
 	public boolean delete(int id) {
-		MapSqlParameterSource param = new MapSqlParameterSource("id", id);
-		return jdbc.update("delete from offers where id = :id", param) == 1;
+
+		Query query = session().createQuery("delete from Offer where id = :id");
+		query.setLong("id", id);
+		return query.executeUpdate() == 1;
+
 	}
 
 	public Offer getOffer(int id) {
-		MapSqlParameterSource params = new MapSqlParameterSource("id", id);
+		Criteria criteria = session().createCriteria(Offer.class);
+		criteria.createAlias("user", "u");
+		criteria.add(Restrictions.eq("u.enabled", true));
+		criteria.add(Restrictions.idEq(id));
 
-		return jdbc.queryForObject(
-				"Select* from offers, users where offers.username=users.username and users.enabled=true and id = :id;",
-				params, new OfferRowMapper()
+		return (Offer) criteria.uniqueResult();
 
-		);
 	}
 
 }
