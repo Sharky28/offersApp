@@ -4,7 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-	<view-state id="showContactForm">
+	<var name="message" class="com.sharky.spring.web.DAO.Message" />
+
+	<view-state id="showContactForm" model="message">
+		<transition on="send" to="sendMessage"></transition>
 	</view-state>
+
+	<action-state id="sendMessage">
+		<evaluate expression="usersService.sendMessage(message)"></evaluate>
+		<transition to="messageSent"></transition>
+	</action-state>
+
+	<view-state id="messageSent"></view-state>
 
 </flow>

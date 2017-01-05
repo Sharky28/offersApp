@@ -6,17 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
+import com.sharky.spring.web.DAO.Message;
+import com.sharky.spring.web.DAO.MessagesDao;
 import com.sharky.spring.web.DAO.User;
 import com.sharky.spring.web.DAO.UsersDao;
 
 @Service("usersService")
 public class UsersService {
-	private UsersDao usersDao;
-
 	@Autowired
-	public void setUsersDAO(UsersDao usersDao) {
-		this.usersDao = usersDao;
-	}
+	private UsersDao usersDao;
+	@Autowired
+	private MessagesDao messagesDao;
+
+
 
 	public void create(User user) {
 		usersDao.create(user);
@@ -29,6 +31,10 @@ public class UsersService {
 	@Secured("ROLE_ADMIN")
 	public List<User> getAllUsers() {
 		return usersDao.getAllUsers();
+	}
+	
+	public void sendMessage(Message message){
+		messagesDao.saveOrUpdate(message);
 	}
 
 }

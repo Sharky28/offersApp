@@ -47,6 +47,7 @@ public class MessagesDao {
 
 	public void saveOrUpdate(Message message) {
 		session().saveOrUpdate(message);
+		System.out.println(message);
 	}
 
 	public boolean delete(int id) {
