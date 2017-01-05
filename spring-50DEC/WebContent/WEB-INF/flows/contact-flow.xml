@@ -7,7 +7,12 @@
 	<var name="message" class="com.sharky.spring.web.DAO.Message" />
 
 	<view-state id="showContactForm" model="message">
-		<transition on="send" to="sendMessage"></transition>
+		<on-entry>
+			<set name="message.username" value="requestParameters.uid"></set>
+		</on-entry>
+		<transition on="send" to="sendMessage">
+		</transition>
+
 	</view-state>
 
 	<action-state id="sendMessage">

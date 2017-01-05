@@ -6,27 +6,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.sharky.spring.web.validation.ValidEmail;
 
 @Entity
-@Table(name="messages")
+@Table(name = "messages")
 public class Message implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3623404075868446783L;
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
+
+	@Size(min = 5, max = 100)
 	private String subject;
+	@Size(min = 5, max = 1000)
 	private String content;
-	//name of user sending message
+	// name of user sending message
+	@Size(min = 8, max = 60)
 	private String name;
-	//email of sender
-	private String email;	
-	//send message to this user
+	// email of sender
+	@ValidEmail
+	private String email;
+	// send message to this user
 	private String username;
-	
+
 	public Message(String subject, String content, String name, String email, String username) {
 		this.subject = subject;
 		this.content = content;
@@ -34,12 +44,10 @@ public class Message implements Serializable {
 		this.email = email;
 		this.username = username;
 	}
-	
-	public Message(){
-	
-	
+
+	public Message() {
+
 	}
-	
 
 	public int getId() {
 		return id;
@@ -146,8 +154,5 @@ public class Message implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

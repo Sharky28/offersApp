@@ -12,9 +12,6 @@
 	<input type="hidden" name="_eventId"
 		value="send"></input>
 		
-		<input type="hidden" name="username"
-		value="sharky28"></input>
-		
 
 	<table class="formTable">
 		<tr>
