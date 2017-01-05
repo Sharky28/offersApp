@@ -1,5 +1,7 @@
 package com.sharky.spring.web.DAO;
 
+import java.io.Serializable;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
@@ -12,7 +14,12 @@ import com.sharky.spring.web.validation.ValidEmail;
 
 @javax.persistence.Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6005503283943928977L;
 
 	@NotBlank(groups={PersistenceValididationGroup.class,FormValidationGroup.class})
 	@Size(min = 6, max = 15,groups={PersistenceValididationGroup.class,FormValidationGroup.class})

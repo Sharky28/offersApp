@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <h2>Send message</h2>
+
 <sf:form method="post" commandName="message">
 
 	<input type="hidden" name="flowExecutionKey"
@@ -16,14 +17,14 @@
 	<table class="formTable">
 		<tr>
 			<td class="label">Your name:</td>
-			<td><sf:input path="name" type="text"></sf:input>
+			<td><sf:input path="name" type="text" value ="${fromName}"></sf:input>
 				<div class="error">
 					<sf:errors path="name"></sf:errors>
 				</div></td>
 		</tr>
 		<tr>
 			<td class="label">Your Email:</td>
-			<td><sf:input path="email" type="text"></sf:input>
+			<td><sf:input path="email" type="text" value ="${fromEmail}"></sf:input>
 				<div class="error">
 					<sf:errors path="email"></sf:errors>
 				</div></td>
